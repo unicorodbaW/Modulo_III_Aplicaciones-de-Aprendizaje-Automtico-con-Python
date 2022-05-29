@@ -5,11 +5,13 @@ Created on Sat May 28 14:44:25 2022
 @author: Wendy Mendozita
 """
 
-a=int(input("ingrese el valor de a: "))
-b=int(input("ingrese el valor de b: "))
-c=int(input("ingrese el valor de c: "))
-d=int(input("ingrese el valor de d: "))
-e=int(input("ingrese el valor de e: "))
+a=int(input("Ingrese el valor de a: "))
+b=int(input("Ingrese el valor de b: "))
+c=int(input("Ingrese el valor de c: "))
+d=int(input("Ingrese el valor de d: "))
+e=int(input("Ingrese el valor de e: "))
+f=int(input("Ingrese el valor de f: "))
+
 print("")
 
 ecu1=(a+(b/c))/(d+(e/f))

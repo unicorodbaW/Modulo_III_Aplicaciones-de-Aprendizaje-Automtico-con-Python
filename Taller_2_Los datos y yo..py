@@ -15,21 +15,21 @@ print(my_data)
 
 # Imprima por consola las primeras 5 filas del arreglo. 
 
- print(my_data.head(5))
+print(my_data.head(5))
 
 # Imprima por consola las Ultima 5 filas del arreglo. 
 
- print(my_data.tail(5))
+print(my_data.tail(5))
 
-# #Imprima cada uno de los tipos de dato asociado a las etiquetas.
+# Imprima cada uno de los tipos de dato asociado a las etiquetas.
 
- print(my_data.dtypes)
+print(my_data.dtypes)
 
- #Guarde un archivo .xlsx, en el cual el nombre del archivo sea “Netflix_list” y el nombre de la hoja sea “títulos #.
+# Guarde un archivo .xlsx, en el cual el nombre del archivo sea “Netflix_list” y el nombre de la hoja sea “títulos #.
  
 my_data.to_excel("netflix_titles.xlsx",sheet_name="titulos",index= False)
 
- my_data_2= pd.read_excel("netflix_titles.xlsx", sheet_name="titulos")
+my_data_2= pd.read_excel("netflix_titles.xlsx", sheet_name="titulos")
 
 # Cree una nueva data frame en el cual segmente únicamente: el tipo, la duración, la descripción y el país.
 
@@ -41,8 +41,8 @@ my_data["duracion"] = pd.to_numeric(my_data['duration'].replace('([^0-9]*)','', 
 
 # Haga un filtro para los “TV Shows” que tienen más de 3 temporadas.
 
-tv_show  =  my_data[my_data['type'].street _ contains('Programa de TV' , na = Falso )]
-tv_show_3_temporadas =  tv_show [ tv_show [ 'duration' ] > 3 ]
+tv_show = my_data[my_data['type'].str.contains('TV Show', na=False)]
+tv_show_3_seasons= tv_show[tv_show['duracion']>3]
 
 # Haga un filtro en el cual solo tenga en cuenta 2 categorías/etiquetas (libre elección)
 
@@ -50,10 +50,9 @@ categoria  =  my_data . loc [my_data ['listed_in' ]. isin ([ 'Romantic TV Shows,
 
 # Modifique los valores del ID de las 5 primeras y las 5 últimas “shows” y de cualquier otra etiqueta de su elección (solo un valor).
 
-my_data.iloc[:5, 0] = 's1'
-my_data.iloc[: 8806, 8802] = 's2'
+my_data.iloc[:5, 0] = 's2'
 my_data.loc[:2968,'listed_in' ] = 'Anime Series, International TV Shows'
 
 # Añada una nueva columna “Visto”, en la cual debe colocar 1/0 (aleatorio) si vio o no el show (simulación).
 
-my_data(np.random.randint(0, 2, (my_data)), columns=['Visto'])
+my_data["Visto"] = np.random.randint(0, 2, my_data.shape[0])

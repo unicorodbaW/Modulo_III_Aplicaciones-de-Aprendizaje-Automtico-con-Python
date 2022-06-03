@@ -5,6 +5,10 @@ Created on Sat May 28 12:06:19 2022
 @author: Wendy Mendozita
 """
 
+## Nombre:  Wendy Paola Mendoza Barrera
+## ID: 502216
+## Email: wendy.mendozab@upb.edu.co 
+
 import pandas as pd
 import random
 import numpy as np

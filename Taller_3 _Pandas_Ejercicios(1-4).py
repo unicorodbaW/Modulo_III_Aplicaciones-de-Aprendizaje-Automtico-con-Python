@@ -5,6 +5,10 @@ cap=360000*(12%/(100+1))x10^2
 @author: Wendy Mendozita
 """
 
+## Nombre:  Wendy Paola Mendoza Barrera
+## ID: 502216
+## Email: wendy.mendozab@upb.edu.co 
+
 import pandas as pd
 df = pd.read_excel('Datos_D_F.xlsx')
 print(df)

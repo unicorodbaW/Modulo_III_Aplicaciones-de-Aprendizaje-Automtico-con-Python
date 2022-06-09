@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun  6 14:14:10 2022
 
-@author: Wendy Mendozita
-"""
+## Diplomado de Python Aplicado ala Ingenieria
 
 ## Nombre: Wendy Paola Mendoza Barrera
 ## ID: 502216
@@ -15,7 +11,7 @@ from sklearn import linear_model
 from sklearn.metrics import r2_score
 from scipy import stats
 import pandas as pd
-import numpy 
+import numpy as np
 
 # ------- leemos archivos excel con pandas
 df = pd.read_excel('AirQualityUCI.xlsx')
@@ -37,7 +33,7 @@ def myfunc(x):
 
 mymodel = list(map(myfunc, x))
 
-plt.scatter(x, y)
+
 plt.plot(x, mymodel)
 plt.show()
 plt.xlabel('C6H6(GT)')
@@ -55,7 +51,7 @@ print("")
 
 # # #------- Predecir valores futuros-----
 
-predicion_val_futuro = myfunc(15)
+predicion_val_futuro = myfunc(40)
 print("La Predicion_ Lineal es:")
 print(predicion_val_futuro)
 print("")
@@ -64,15 +60,16 @@ print("")
 # #------------------Regresion Polinomial -----------------------#
 
 # Modelo polinomial​
-mymodel = numpy.poly1d(numpy.polyfit(x, y, 5))
+mymodel = np.poly1d(np.polyfit(x, y, 3))
 
 # Definimos el espaciamiento para la linea
-myline = numpy.linspace(1, 22, 100)
+myline = np.linspace(100, 1000, 8000)
 
 # Nuevos valores de Y
 poli_new_y = mymodel(myline)
 
 # # Dibujamos la línea de regresión polinomial
+
 
 plt.plot(myline, poli_new_y)
 plt.show()
@@ -93,7 +90,7 @@ print("")
 
 # # ------------   Predecir valores futuros -------------- 
 
-predicion_polinomial = mymodel(10)
+predicion_polinomial = mymodel(16)
 print("La predicion Polinomial es:")
 print(predicion_polinomial)
 print("")
@@ -101,24 +98,29 @@ print("")
 
 # -----Regresion Multiple---------
 
+x,y = np.array(x).reshape(-1,1), np.array(y)
 
-# Hacer una lista de las variables independiente
-k = df[['NO2(GT)']]
+valor_X = x[:8000]
+valor_Y = y[:8000]
 
-# lista de variable dependiente
-z = df ['C6H6(GT)']
+prueba_X = x[8000:]
+prueba_Y = y[8000:]
 
-k1 = numpy.array(k)
-z1 = numpy.array(z)
+# # Hacer una lista de las variables independiente
+# k = df[['NO2(GT)']]
+
+# # lista de variable dependiente
+# z = df ['C6H6(GT)']
+
 
 # Regresion 
 
 reg_mod = linear_model.LinearRegression()
-reg_mod.fit(k1, z1)
+reg_mod.fit(valor_X, valor_Y)
 
 # Predicion 
 
-predic_multiple = reg_mod.predict([[50]])
+predic_multiple = reg_mod.predict([[102]])
 
 print("La Regresion Multiple es:")
 print(predic_multiple )

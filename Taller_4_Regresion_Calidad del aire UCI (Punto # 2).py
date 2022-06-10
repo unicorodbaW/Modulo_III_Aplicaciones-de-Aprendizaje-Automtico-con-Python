@@ -21,8 +21,9 @@ print(df)
 #------------------Regresion Lineal -----------------------#
 
 # Declaramos las varaibles x y Y
-x  = df['C6H6(GT)']
-y  = df['NO2(GT)']
+x  = df['C6H6(GT)'][:8001]
+y  = df['NO2(GT)'][:8001]
+
 
 # Variable estadistico retornados del metodo linregress
 slope, intercept, r,p, std_err = stats.linregress(x,y)
@@ -100,23 +101,10 @@ print("")
 
 x,y = np.array(x).reshape(-1,1), np.array(y)
 
-valor_X = x[:8000]
-valor_Y = y[:8000]
-
-prueba_X = x[8000:]
-prueba_Y = y[8000:]
-
-# # Hacer una lista de las variables independiente
-# k = df[['NO2(GT)']]
-
-# # lista de variable dependiente
-# z = df ['C6H6(GT)']
-
-
 # Regresion 
 
 reg_mod = linear_model.LinearRegression()
-reg_mod.fit(valor_X, valor_Y)
+reg_mod.fit(x,y)
 
 # Predicion 
 
